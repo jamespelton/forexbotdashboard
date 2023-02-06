@@ -4,7 +4,7 @@ $account2 = $_GET['account2'];
 $balance = $account1+$account2;
 
 $servername = "localhost";
-$username = "root";
+$username = "jpelton";
 $password = "imaSSJ722!";
 $dbname = "ForexNFTs";
 

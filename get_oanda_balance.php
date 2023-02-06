@@ -30,15 +30,13 @@ if ($err) {
 $data = json_decode($response);
 
 $servername = "localhost";
-$username = "root";
+$username = "jpelton";
 $password = "imaSSJ722!";
 $dbname = "ForexNFTs";
 
+$dbh = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
 $query = "INSERT INTO Balances (balance, account) VALUES ('{$data->account->balance}', 'oanda')";
-
-
-$dbh = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
 // Run your query
 $sth = $dbh->prepare($query);
