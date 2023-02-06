@@ -10,7 +10,9 @@ $dbname = "ForexNFTs";
 
 $dbh = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
-$query = "INSERT INTO log (log_entry, log_time) VALUES (print_r($_REQUEST,true), NOW());";
+$request = print_r($_REQUEST['variable'],true);
+
+$query = "INSERT INTO log (log_entry, log_time) VALUES ('$request', NOW());";
 
 // Run your query
 $sth = $dbh->prepare($query);
