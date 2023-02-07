@@ -147,7 +147,7 @@ $risky_bot_loss[$previous_date] = $total_loss;
 
 echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%' . "\n";
 
-print_r($risky_bot_gain));
+print_r($risky_bot_gain);
 print_r($safe_bot_gain);
 
 
