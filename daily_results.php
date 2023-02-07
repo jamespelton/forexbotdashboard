@@ -164,15 +164,65 @@ $risky_bot_balance[$previous_date] = $previous_balance;
 ksort($risky_bot_balance);
 ksort($safe_bot_balance);
 
-foreach ($safe_bot_balance as $date => $balance) {
-    echo "$date: \n";
-    echo "Safe Balance: $balance\n";
-    echo "Risky Balance: " . $risky_bot_balance[$date] . "\n";
-    $total_balance = $balance + $risky_bot_balance[$date];
-    echo "Total Balance: $total_balance\n";
-    echo "\n"; 
+// foreach ($safe_bot_balance as $date => $balance) {
+//     echo "$date: \n";
+//     echo "Safe Balance: $balance\n";
+//     echo "Risky Balance: " . $risky_bot_balance[$date] . "\n";
+//     $total_balance = $balance + $risky_bot_balance[$date];
+//     echo "Total Balance: $total_balance\n";
+//     echo "\n"; 
+// }
+
+// Define total balance
+$total_balance = array();
+foreach ($risky_bot_balance as $key => $value) {
+    $total_balance[$key] = $value + $safe_bot_balance[$key];
 }
 
+// Print calendar
+echo "<html>";
+echo "<head>";
+echo "<title>Balance Calendar</title>";
+echo "</head>";
+echo "<body>";
 
+echo "<h1>Balance Calendar</h1>";
 
+echo "<form>";
+echo "<input type='radio' name='balance' value='safe'> Safe<br>";
+echo "<input type='radio' name='balance' value='risky'> Risky<br>";
+echo "<input type='radio' name='balance' value='total'> Total<br>";
+echo "<input type='submit' value='Submit'>";
+echo "</form>";
+
+echo "<table>";
+echo "<tr><th>Date</th><th>Balance</th><th>% Change</th></tr>";
+
+$previous_value = 0;
+
+foreach ($risky_bot_balance as $key => $value) {
+    $balance = 0;
+    if (isset($_GET["balance"])) {
+        if ($_GET["balance"] == "safe") {
+            $balance = $safe_bot_balance[$key];
+        } else if ($_GET["balance"] == "risky") {
+            $balance = $risky_bot_balance[$key];
+        } else if ($_GET["balance"] == "total") {
+            $balance = $total_balance[$key];
+        }
+    }
+
+    $percent_change = 0;
+    if ($previous_value != 0) {
+        $percent_change = ($balance - $previous_value) / $previous_value * 100;
+    }
+
+    echo "<tr><td>" . $key . "</td><td>" . $balance .  "</td><td>" . $percent_change . "</td></tr>";
+
+    $previous_value = $balance;
+}
+
+echo "</table>";
+echo "</body>";
+echo "</html>";
 ?>
