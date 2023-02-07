@@ -9,7 +9,7 @@ $dbh = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
 $sql = "SELECT * FROM Balances";
 
-$stmt = $conn->prepare($sql);
+$stmt = $dbh->prepare($sql);
 $stmt->execute();
 
 //Loop Through Result Set
