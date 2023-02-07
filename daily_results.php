@@ -46,7 +46,7 @@ foreach($records as $record) {
             $gain_percentage = ($total_gain / $previous_balance) * 100;
             $loss_percentage = ($total_loss / $previous_balance) * 100;
 
-            echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%';
+            echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%\n';
         }
 
         // Reset the total gain/loss
@@ -63,6 +63,6 @@ foreach($records as $record) {
 $gain_percentage = ($total_gain / $previous_balance) * 100;
 $loss_percentage = ($total_loss / $previous_balance) * 100;
 
-echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%';
+echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%\n';
 
 ?>
