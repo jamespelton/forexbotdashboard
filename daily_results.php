@@ -251,7 +251,7 @@ if ($_GET["balance"] == "safe") {
 
 
 
-$return = ($balance / $initial) * 100;
+$return = ($balance / $initial);
 
 
 echo "<tr>";
