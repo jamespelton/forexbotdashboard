@@ -6,6 +6,10 @@ $dbname = "ForexNFTs";
 
 $dbh = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
+$risky_bot_gain = array();
+$risky_bot_loss = array();
+$safe_bot_gain = array();
+$safe_bot_loss = array();
 
 
 echo "Safe bot\n";
@@ -49,7 +53,8 @@ foreach($records as $record) {
         if($previous_date != '') {
             $gain_percentage = ($total_gain / $previous_balance) * 100;
             $loss_percentage = ($total_loss / $previous_balance) * 100;
-
+            $safe_bot_gain[$previous_date] = $total_gain;
+            $safe_bot_loss[$previous_date] = $total_loss;
             echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%' . "\n";
         }
 
@@ -67,7 +72,13 @@ foreach($records as $record) {
 $gain_percentage = ($total_gain / $previous_balance) * 100;
 $loss_percentage = ($total_loss / $previous_balance) * 100;
 
+$safe_bot_gain[$previous_date] = $total_gain;
+$safe_bot_loss[$previous_date] = $total_loss;
+
 echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%' . "\n";
+
+
+/* Risky Bot */
 
 echo "Risky Bot\n";
 $sql = "SELECT created, account, balance FROM Balances where account='adrofx'";
@@ -111,6 +122,9 @@ foreach($records as $record) {
             $gain_percentage = ($total_gain / $previous_balance) * 100;
             $loss_percentage = ($total_loss / $previous_balance) * 100;
 
+            $risky_bot_gain[$previous_date] = $total_gain;
+            $risky_bot_loss[$previous_date] = $total_loss;
+
             echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%' . "\n";
         }
 
@@ -128,7 +142,13 @@ foreach($records as $record) {
 $gain_percentage = ($total_gain / $previous_balance) * 100;
 $loss_percentage = ($total_loss / $previous_balance) * 100;
 
+$risky_bot_gain[$previous_date] = $total_gain;
+$risky_bot_loss[$previous_date] = $total_loss;
+
 echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%' . "\n";
+
+print_r($risky_bot_gain));
+print_r($safe_bot_gain);
 
 
 ?>
