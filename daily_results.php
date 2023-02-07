@@ -10,6 +10,8 @@ $risky_bot_gain = array();
 $risky_bot_loss = array();
 $safe_bot_gain = array();
 $safe_bot_loss = array();
+$risky_bot_balance = array();
+$safe_bot_balance = array();
 
 
 echo "Safe bot\n";
@@ -55,6 +57,7 @@ foreach($records as $record) {
             $loss_percentage = ($total_loss / $previous_balance) * 100;
             $safe_bot_gain[$previous_date] = $total_gain;
             $safe_bot_loss[$previous_date] = $total_loss;
+            $safe_bot_balance[$previous_date] = $previous_balance;
             echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%' . "\n";
         }
 
@@ -74,6 +77,7 @@ $loss_percentage = ($total_loss / $previous_balance) * 100;
 
 $safe_bot_gain[$previous_date] = $total_gain;
 $safe_bot_loss[$previous_date] = $total_loss;
+$safe_bot_balance[$previous_date] = $previous_balance;
 
 echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%' . "\n";
 
@@ -124,6 +128,7 @@ foreach($records as $record) {
 
             $risky_bot_gain[$previous_date] = $total_gain;
             $risky_bot_loss[$previous_date] = $total_loss;
+            $risky_bot_balance[$previous_date] = $previous_balance;
 
             echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%' . "\n";
         }
@@ -144,11 +149,14 @@ $loss_percentage = ($total_loss / $previous_balance) * 100;
 
 $risky_bot_gain[$previous_date] = $total_gain;
 $risky_bot_loss[$previous_date] = $total_loss;
+$risky_bot_balance[$previous_date] = $previous_balance;
 
 echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%' . "\n";
 
 print_r($risky_bot_gain);
 print_r($safe_bot_gain);
+print_r($safe_bot_balance);
+print_r($risky_bot_balance);
 
 
 ?>
