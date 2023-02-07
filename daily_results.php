@@ -165,6 +165,8 @@ foreach ($safe_bot_balance as $date => $balance) {
     echo "$date: \n";
     echo "Safe Balance: $balance\n";
     echo "Risky Balance: " . $risky_bot_balance[$date] . "\n";
+    $total_balance = $balance + $risky_bot_balance[$date];
+    echo "Total Balance: $total_balance\n";
     echo "\n"; 
 }
 
