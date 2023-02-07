@@ -186,7 +186,7 @@ $date_format = 'm/d/Y';
 $balance_format = '$%s'; 
 
 // Formatting %change 
-$percentage_format = '%s.2f'; 
+$percentage_format = '%.2f'; 
 
 
 // Print calendar
