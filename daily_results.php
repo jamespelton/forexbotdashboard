@@ -212,14 +212,12 @@ $previous_value = 0;
 
 foreach ($risky_bot_balance as $key => $value) {
     $balance = 0;
-    if (isset($_GET["balance"])) {
-        if ($_GET["balance"] == "safe") {
-            $balance = $safe_bot_balance[$key];
-        } else if ($_GET["balance"] == "risky") {
-            $balance = $risky_bot_balance[$key];
-        } else if ($_GET["balance"] == "total") {
-            $balance = $total_balance[$key];
-        }
+    if ($_GET["balance"] == "safe") {
+        $balance = $safe_bot_balance[$key];
+    } else if ($_GET["balance"] == "risky") {
+        $balance = $risky_bot_balance[$key];
+    } else {
+        $balance = $total_balance[$key];
     }
 
     $percent_change = 0;
@@ -231,6 +229,32 @@ foreach ($risky_bot_balance as $key => $value) {
 
     $previous_value = $balance;
 }
+
+$risky_initial = 9211.19;
+$safe_initial = 37788.81;
+$total_initial = $risky_initial + $safe_initial;
+
+$risky_current = end($risky_bot_balance);
+$safe_current = end($safe_bot_balance);
+$total_current = $risky_current + $safe_current;
+
+if ($_GET["balance"] == "safe") {
+    $balance = $safe_current;
+    $initial = $safe_initial;
+} else if ($_GET["balance"] == "risky") {
+    $balance = $risky_current;
+    $initial = $risky_initial;
+} else {
+    $balance = $total_current;
+    $initial = $total_initial;
+}
+
+$return = ($balance / $initial) * 100;
+
+
+echo "<tr>";
+echo "<td colspan=3>Total Return: " . sprintf($percentage_format,$return) . "</td>";
+echo "</tr>";
 
 echo "</table>";
 echo "</body>";
