@@ -255,7 +255,7 @@ $return = ($balance / $initial);
 
 
 echo "<tr>";
-echo "<td colspan=3>Balance: $balance | $initial | Total Return: " . sprintf($percentage_format,$return) . "</td>";
+echo "<td colspan=3>Total Return: " . sprintf($percentage_format,$return) . "%</td>";
 echo "</tr>";
 
 echo "</table>";
