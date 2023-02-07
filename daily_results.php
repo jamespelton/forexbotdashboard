@@ -161,6 +161,9 @@ $risky_bot_balance[$previous_date] = $previous_balance;
 
 //We have everything in arrays now, loop through all days that we have records for
 
+ksort($risky_bot_balance);
+ksort($safe_bot_balance);
+
 foreach ($safe_bot_balance as $date => $balance) {
     echo "$date: \n";
     echo "Safe Balance: $balance\n";
