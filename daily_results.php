@@ -27,7 +27,7 @@ $total_loss = 0;
 // Loop through the records
 foreach($records as $record) {
     // Get the date and balance value
-    $date = $record['date'];
+    $date = $record['created'];
     $balance = $record['balance'];
 
     // Calculate change in balance
