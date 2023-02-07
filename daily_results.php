@@ -227,7 +227,7 @@ foreach ($risky_bot_balance as $key => $value) {
         $percent_change = ($balance - $previous_value) / $previous_value * 100;
     }
 
-    echo "<tr><td>" . date($date_format, strtotime($key)) . "</td><td>" . sprintf($balance_format,$balance) .  "</td><td>" . sprintf($percentage_format,$percent_change) . "</td></tr>";
+    echo "<tr><td>" . date($date_format, strtotime($key)) . "</td><td>" . sprintf($balance_format,$balance) .  "</td><td>" . round(sprintf($percentage_format,$percent_change),2) . "</td></tr>";
 
     $previous_value = $balance;
 }
