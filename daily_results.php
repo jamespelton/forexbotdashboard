@@ -162,7 +162,7 @@ $risky_bot_balance[$previous_date] = $previous_balance;
 //We have everything in arrays now, loop through all days that we have records for
 
 foreach ($safe_bot_balance as $date => $balance) {
-    echo "$date: \n"
+    echo "$date: \n";
     echo "Safe Balance: $balance\n";
     echo "Risky Balance: " . $risky_bot_balance[$date] . "\n";
     echo "\n"; 
