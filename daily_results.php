@@ -14,7 +14,7 @@ $risky_bot_balance = array();
 $safe_bot_balance = array();
 
 
-echo "Safe bot\n";
+// echo "Safe bot\n";
 $sql = "SELECT created, account, balance FROM Balances where account='oanda'";
 
 $stmt = $dbh->prepare($sql);
@@ -58,7 +58,7 @@ foreach($records as $record) {
             $safe_bot_gain[$previous_date] = $total_gain;
             $safe_bot_loss[$previous_date] = $total_loss;
             $safe_bot_balance[$previous_date] = $previous_balance;
-            echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%' . "\n";
+            // echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%' . "\n";
         }
 
         // Reset the total gain/loss
@@ -79,12 +79,12 @@ $safe_bot_gain[$previous_date] = $total_gain;
 $safe_bot_loss[$previous_date] = $total_loss;
 $safe_bot_balance[$previous_date] = $previous_balance;
 
-echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%' . "\n";
+// echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%' . "\n";
 
 
 /* Risky Bot */
 
-echo "Risky Bot\n";
+// echo "Risky Bot\n";
 $sql = "SELECT created, account, balance FROM Balances where account='adrofx'";
 
 $stmt = $dbh->prepare($sql);
@@ -130,7 +130,7 @@ foreach($records as $record) {
             $risky_bot_loss[$previous_date] = $total_loss;
             $risky_bot_balance[$previous_date] = $previous_balance;
 
-            echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%' . "\n";
+            // echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%' . "\n";
         }
 
         // Reset the total gain/loss
@@ -151,12 +151,23 @@ $risky_bot_gain[$previous_date] = $total_gain;
 $risky_bot_loss[$previous_date] = $total_loss;
 $risky_bot_balance[$previous_date] = $previous_balance;
 
-echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%' . "\n";
+// echo 'On ' . $previous_date . ', you gained ' . $gain_percentage . '% and lost ' . $loss_percentage . '%' . "\n";
 
-print_r($risky_bot_gain);
-print_r($safe_bot_gain);
-print_r($safe_bot_balance);
-print_r($risky_bot_balance);
+// print_r($risky_bot_gain);
+// print_r($safe_bot_gain);
+// print_r($safe_bot_balance);
+// print_r($risky_bot_balance);
+
+
+//We have everything in arrays now, loop through all days that we have records for
+
+foreach ($safe_bot_balance as $date => $balance) {
+    echo "$date: \n"
+    echo "Safe Balance: $balance\n";
+    echo "Risky Balance: " . $risky_bot_balance[$date] . "\n";
+    echo "\n"; 
+}
+
 
 
 ?>
