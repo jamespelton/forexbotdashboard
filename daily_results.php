@@ -179,6 +179,16 @@ foreach ($risky_bot_balance as $key => $value) {
     $total_balance[$key] = $value + $safe_bot_balance[$key];
 }
 
+
+$date_format = 'm/d/Y'; 
+
+// Formatting balances 
+$balance_format = '$%s'; 
+
+// Formatting %change 
+$percentage_format = '%s%%'; 
+
+
 // Print calendar
 echo "<html>";
 echo "<head>";
@@ -217,7 +227,7 @@ foreach ($risky_bot_balance as $key => $value) {
         $percent_change = ($balance - $previous_value) / $previous_value * 100;
     }
 
-    echo "<tr><td>" . $key . "</td><td>" . $balance .  "</td><td>" . $percent_change . "</td></tr>";
+    echo "<tr><td>" . date($date_format, strtotime($key)) . "</td><td>" . sprintf($balance_format,$balance) .  "</td><td>" . sprintf($percentage_format,$percent_change) . "</td></tr>";
 
     $previous_value = $balance;
 }
