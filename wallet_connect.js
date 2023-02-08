@@ -1,5 +1,12 @@
 import ERC721 from '../ERC721.json'
 
+
+let btn = document.querySelector('#show');
+btn.addEventListener('click', function () {
+    connect();
+});
+
+
 /* To connect using MetaMask */
 async function connect() {
   if (window.ethereum) {
