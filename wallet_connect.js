@@ -1,24 +1,33 @@
-import WalletConnectProvider from "@walletconnect/web3-provider";
+import ERC721 from '../ERC721.json'
 
-//  Create WalletConnect Provider
-const provider = new WalletConnectProvider({
-  infuraId: "27e484dcd9e3efcfd25a83a78777cdf1",
-});
+/* To connect using MetaMask */
+async function connect() {
+  if (window.ethereum) {
+     await window.ethereum.request({ method: "eth_requestAccounts" });
+     window.web3 = new Web3(window.ethereum);
+     const account = web3.eth.accounts;
+     //Get the current MetaMask selected/active wallet
+     const walletAddress = account.givenProvider.selectedAddress;
+     //Eth = chainID 1
+     //Polygon = chainID 137
+     //BSC = chainID 56
+     
+     //Verify we are on the right chain
+     web3.eth.getChainId().then(chainId => {
+      if (chainId !== 56) {
+        console.log("Must be on BSC to continue!");
+      } else {
+         //Check how many NFTs they have
+         contract_address = '0x9becFB7B753AfE1450Dc7dB21CDd8fA4cCDAE81C';
 
-//  Enable session (triggers QR Code modal)
-await provider.enable();
 
-/*
-const polygon = new Polygon(window.ethereum);
+      }
+    });
 
-const tokenId = '<YOUR_NFT_ID>';
+     console.log(`Wallet: ${walletAddress}`);
 
-polygon.getToken(tokenId).then((token) => {
-  // Check if the NFT is present
-  if (token) {
-    console.log('NFT is present!');
+  
   } else {
-    console.log('NFT is not present.');
+   console.log("No wallet");
   }
-});
-*/
+}
