@@ -1,4 +1,4 @@
-import { configureChains, createClient } from "@wagmi/core";
+import { configureChains, createClient } from "@wagmi/core/dist/index.js";
 import { arbitrum, mainnet, polygon } from "@wagmi/core/chains";
 import { Web3Modal } from "@web3modal/html";
 import {
