@@ -18,7 +18,10 @@ async function connect() {
      //BSC = chainID 56
      const chainID = web3.eth.getChainId();
 
-     if (chainID != 56) console.log("You need to switch to BSC to access these");
+     if (chainID != 56) {
+        console.log("You need to switch to BSC to access these");
+        console.log("You are currently on " . chainID);
+    }
 
      console.log(`Wallet: ${walletAddress}`);
   
