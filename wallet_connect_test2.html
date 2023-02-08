@@ -13,8 +13,8 @@ async function connect() {
      const account = web3.eth.accounts;
      //Get the current MetaMask selected/active wallet
      const walletAddress = account.givenProvider.selectedAddress;
-     // web3.eth.getChainId().then(console.log);
-     console.log("Chain: " account.givenProvider)
+     web3.eth.getChainId().then(console.log);
+     console.log("Chain: " account.givenProvider);
      console.log(`Wallet: ${walletAddress}`);
   
   } else {
