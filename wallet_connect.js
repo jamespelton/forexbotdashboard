@@ -41,7 +41,7 @@ async function connect() {
   }
 }
 
-async holdsToken(contractAddress) {
+async function holdsToken(contractAddress) {
   const ERC721 = require()
   const provider = await web3Modal.connect() /* This example uses the web3Modal package */
   const web3 = new Web3(provider)
