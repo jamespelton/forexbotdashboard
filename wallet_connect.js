@@ -27,7 +27,7 @@ async function connect() {
         console.log("Must be on BSC to continue!");
       } else {
          //Check how many NFTs they have
-         
+         holdsToken(contract_address);
 
 
       }
