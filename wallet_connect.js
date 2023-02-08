@@ -27,8 +27,9 @@ async function connect() {
         console.log("Must be on BSC to continue!");
       } else {
          //Check how many NFTs they have
-         holdsToken(contract_address);
-
+         const contract = new web3.eth.Contract(ERC721.abi, contract_address)
+         const result = await contract.methods.balanceOf(currentWallet).call()
+        console.log(result);
 
       }
     });
