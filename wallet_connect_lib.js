@@ -1,4 +1,4 @@
-import { SafeConnector } from '@gnosis.pm/safe-apps-wagmi'
+import { SafeConnector } from '@gnosis.pm/safe-apps-wagmi/connector'
 import { configureChains, createClient } from '@wagmi/core'
 import { goerli, mainnet } from '@wagmi/core/chains'
 import { EthereumClient, modalConnectors, walletConnectProvider } from '@web3modal/ethereum'
