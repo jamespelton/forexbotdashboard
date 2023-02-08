@@ -13,7 +13,13 @@ async function connect() {
      const account = web3.eth.accounts;
      //Get the current MetaMask selected/active wallet
      const walletAddress = account.givenProvider.selectedAddress;
-     web3.eth.getChainId().then(console.log);
+     //Eth = chainID 1
+     //Polygon = chainID 137
+     //BSC = chainID 56
+     const chainID = web3.eth.getChainId();
+
+     if (chainID != 56) console.log("You need to switch to BSC to access these");
+
      console.log(`Wallet: ${walletAddress}`);
   
   } else {
