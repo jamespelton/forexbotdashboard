@@ -16,11 +16,12 @@ async function connect() {
      //Eth = chainID 1
      //Polygon = chainID 137
      //BSC = chainID 56
-     const chainID = web3.eth.getChainId().then(function () {
-        if (chainID != 56) {
-            console.log("You need to switch to BSC to access these");
-            console.log("You are currently on " . chainID);
-        }
+     
+     //Verify we are on the right chain
+     web3.eth.getChainId().then(chainId => {
+      if (chainId !== 56) {
+        console.log("Must be on BSC to continue!");
+      }
     });
 
      console.log(`Wallet: ${walletAddress}`);
