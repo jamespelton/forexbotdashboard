@@ -1,8 +1,9 @@
-import ERC721 from '../ERC721.json'
+import ERC721 from 'ERC721.json'
 
 
 let btn = document.querySelector('#show');
 btn.addEventListener('click', function () {
+    console.log("Clicked");
     connect();
 });
 
