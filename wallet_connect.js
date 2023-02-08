@@ -1,9 +1,10 @@
-// import ERC721 from 'ERC721.json'
+import ERC721 from 'ERC721.json'
+
+const contract_address = '0x9becFB7B753AfE1450Dc7dB21CDd8fA4cCDAE81C';
 
 
 let btn = document.querySelector('#show');
 btn.addEventListener('click', function () {
-    console.log("Clicked");
     connect();
 });
 
@@ -26,7 +27,7 @@ async function connect() {
         console.log("Must be on BSC to continue!");
       } else {
          //Check how many NFTs they have
-         contract_address = '0x9becFB7B753AfE1450Dc7dB21CDd8fA4cCDAE81C';
+         
 
 
       }
@@ -38,4 +39,19 @@ async function connect() {
   } else {
    console.log("No wallet");
   }
+}
+
+async holdsToken(contractAddress) {
+  const ERC721 = require()
+  const provider = await web3Modal.connect() /* This example uses the web3Modal package */
+  const web3 = new Web3(provider)
+  const accounts = await web3.eth.getAccounts()
+  const currentWallet = Web3.utils.toChecksumAddress(accounts[0])
+
+  const contract = new web3.eth.Contract(ERC721.abi, contractAddress)
+
+  const result = await contract.methods.balanceOf(currentWallet).call()
+  console.log(result);
+
+  return parseInt(result) && parseInt(result) > 0
 }
