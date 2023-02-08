@@ -1,4 +1,4 @@
-import ERC721 from 'ERC721.json'
+// import ERC721 from 'ERC721.json'
 
 
 let btn = document.querySelector('#show');
