@@ -1,3 +1,5 @@
+import ERC721 from './ERC721.json';
+
 const contract_address = '0x9becFB7B753AfE1450Dc7dB21CDd8fA4cCDAE81C';
 
 
@@ -40,8 +42,6 @@ async function connect() {
 }
 
 async function holdsToken(contractAddress) {
-  import ERC721 from './ERC721.json';
-
   const provider = await web3Modal.connect() /* This example uses the web3Modal package */
   const web3 = new Web3(provider)
   const accounts = await web3.eth.getAccounts()
