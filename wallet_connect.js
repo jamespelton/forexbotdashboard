@@ -1,4 +1,4 @@
-import ERC721 from './ERC721.json';
+import ERC721 from './ERC721.json' assert { type: 'json' };
 
 const contract_address = '0x9becFB7B753AfE1450Dc7dB21CDd8fA4cCDAE81C';
 
